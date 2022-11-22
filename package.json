@@ -1,0 +1,53 @@
+{
+  "name": "copy-paste-styles",
+  "description": "Copy and Paste Gutenberg Styles",
+  "main": "copy-paste-styles.php",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cutch/copy-paste-styles.git"
+  },
+  "keywords": [
+    "copy",
+    "styles",
+    "wordpress"
+  ],
+  "author": "Cutch",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Cutch/copy-paste-styles/issues"
+  },
+  "homepage": "https://github.com/Cutch/copy-paste-styles#readme",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.12.13",
+    "@babel/core": "7.12.13",
+    "@babel/eslint-parser": "^7.16.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-react-jsx": "^7.19.0",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.20.2",
+    "@wordpress/data": "^4.25.0",
+    "@wordpress/dependency-extraction-webpack-plugin": "^2.9.0",
+    "babel-loader": "^9.1.0",
+    "case-sensitive-paths-webpack-plugin": "^2.3.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "eslint": "8.2.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "7.27.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "mini-css-extract-plugin": "^2.7.0",
+    "prettier": "2.5.1",
+    "webpack-cli": "^5.0.0"
+  },
+  "dependencies": {
+    "@wordpress/edit-post": "^6.19.0",
+    "@wordpress/hooks": "^3.22.0",
+    "@wordpress/plugins": "^4.20.0"
+  }
+}

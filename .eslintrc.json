@@ -1,0 +1,53 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "google",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "ignorePatterns": ["**/*.config.js"],
+  "plugins": ["react", "react-hooks", "prettier"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies,
+    // custom
+    "react/prop-types": [1, { "skipUndeclared": true }],
+    "no-console": "warn",
+    "require-jsdoc": "off",
+    "one-var": "off",
+    "arrow-parens": "off",
+    "max-len": "off",
+    "object-curly-spacing": "off",
+    "indent": "off",
+    "no-unused-vars": "warn",
+    "no-undef": "error",
+    "prefer-const": "warn",
+    "no-invalid-this": "off", // error on this in arrow function in React classes
+    // define code formatting rules in ./.prettierrc.json
+    "react/no-unescaped-entities": "off",
+    "camelcase": "warn",
+    "quotes": "off",
+    "quote-props": "off",
+    "new-cap": "warn",
+    "space-before-function-paren": "off",
+    "prettier/prettier": "warn",
+    "no-nested-ternary": "off",
+    "react/react-in-jsx-scope": "off"
+  }
+}

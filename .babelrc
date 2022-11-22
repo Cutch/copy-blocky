@@ -1,0 +1,14 @@
+{
+    "presets": [ [ "@babel/preset-env" ] ],
+    "plugins": [
+      [
+        "@babel/transform-react-jsx",
+        {
+          "pragma": "wp.element.createElement"
+        }
+      ],
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-syntax-dynamic-import"
+    ],
+    "comments": true
+  }
