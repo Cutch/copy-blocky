@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com" viewBox="0 0 321.8 397">
+  <path fill="#fff" stroke="#000" stroke-linejoin="round" stroke-miterlimit="13" stroke-width="14" d="M9 8.7h218.2v316H9z"/>
+  <path fill="#d8d8d8" stroke="#000" stroke-linecap="round" stroke-width="14" d="M38.4 89.1h166.2m-55.7 70.4h52.7"/>
+  <path bx:origin="0.483363 0" fill="#d8d8d8" stroke="#000" stroke-linecap="round" stroke-width="14" d="M38.4 234.5h166.2"/>
+  <path bx:origin="0.520957 0" fill="#d8d8d8" stroke="#000" stroke-linecap="round" stroke-width="14" d="M38.4 295.1h166.2"/>
+  <path fill="#d8d8d8" stroke="#000" stroke-linecap="round" stroke-width="14" d="M148.9 188.7h52.7m-52.7-60.2h52.7"/>
+  <path fill="#484848" stroke="#000" stroke-linejoin="round" stroke-miterlimit="13" stroke-width="14" d="M35.4 121.8h83.3v70H35.4z"/>
+  <ellipse cx="180.7" cy="54.4" fill="#484848" stroke="#000" stroke-width="14" rx="20" ry="19.1"/>
+  <path fill="#d8d8d8" stroke="#000" stroke-linecap="round" stroke-width="14" d="M38.4 55h96.7M38.4 270.8h166.2"/>
+  <path fill="#fff" stroke="#000" stroke-linejoin="round" stroke-miterlimit="13" stroke-width="14" d="M95.2 72.6h218.2v316H95.2z"/>
+  <path fill="#d8d8d8" stroke="#000" stroke-linecap="round" stroke-width="7" d="M121.7 153h166.2m-52.8 70.4h52.7"/>
+  <path fill="#d8d8d8" stroke="#000" stroke-linecap="round" stroke-width="14" d="M124.4 298.5h159.2"/>
+  <path bx:origin="0.520957 0" fill="#d8d8d8" stroke="#000" stroke-linecap="round" stroke-width="7" d="M121.7 359.1h166.2"/>
+  <path fill="#d8d8d8" stroke="#000" stroke-linecap="round" stroke-width="7" d="M235.1 252.6h52.8m-52.8-60.2h52.7"/>
+  <path fill="#484848" stroke="#000" stroke-linejoin="round" stroke-miterlimit="13" stroke-width="7" d="M121.7 185.8H205v70h-83.3z"/>
+  <ellipse cx="266.9" cy="118.3" fill="#484848" stroke="#000" stroke-width="4" rx="20" ry="19.1"/>
+  <path fill="#d8d8d8" stroke="#000" stroke-linecap="round" stroke-width="14" d="M124.7 118.9h96.7"/>
+  <path fill="#d8d8d8" stroke="#000" stroke-linecap="round" stroke-width="7" d="M121.7 334.8h166.2"/>
+</svg>
