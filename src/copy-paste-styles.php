@@ -1,13 +1,17 @@
 <?php
-/*
-   Plugin Name: Copy Paste Styles
-   Plugin URI: https://github.com/Cutch/wordpress-copy-paste-styles
-   description: Copy and Paste Gutenberg Styles
-   Version: 1.0
-   Author: Cutch
-   Author URI: https://github.com/Cutch
-   License: GPL3
-   */
+
+/**
+ * Plugin Name: Copy Paste Styles
+ * Plugin URI: https://github.com/Cutch/copy-paste-styles
+ * Description: Copy and Paste Gutenberg Styles
+ * Requires at least: 5.6
+ * Requires PHP: 7.2
+ * Version: 1.0.0
+ * Author: Cutch
+ * Author URI: https://github.com/Cutch
+ * License: GPL3
+ * Text Domain: copy-paste-styles
+ */
 function cps_add_script($hook)
 {
   if ('post.php' != $hook) {

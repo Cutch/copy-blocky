@@ -33,7 +33,3 @@ const CopyPasteStyles = () => {
 registerPlugin('copy-paste-styles', {
   render: CopyPasteStyles,
 });
-// wp.hooks.addFilter('editor.BlockEdit', 'edit', (args) => {
-//   console.log(args);
-//   return args;
-// });
