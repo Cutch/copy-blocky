@@ -22,7 +22,6 @@ module.exports = (config) => {
       new CopyPlugin({
         patterns: [
           { from: 'readme.txt', to: '' },
-          { from: 'icon.svg', to: '' },
           {
             from: 'src/*.php',
             to({ context, absoluteFilename }) {
