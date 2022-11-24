@@ -19,7 +19,7 @@
   "homepage": "https://github.com/Cutch/copy-paste-styles#readme",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack --mode development"
+    "dev": "webpack --mode development --watch"
   },
   "devDependencies": {
     "@babel/cli": "7.12.13",

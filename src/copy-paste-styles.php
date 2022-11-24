@@ -12,6 +12,11 @@
  * License: GPL3
  * Text Domain: copy-paste-styles
  */
+
+
+/**
+ * Add the javascript to the post.php page
+ */
 function cps_add_script($hook)
 {
   if ('post.php' != $hook) {

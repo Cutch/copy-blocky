@@ -30,6 +30,7 @@
     "react/prop-types": [1, { "skipUndeclared": true }],
     "no-console": "warn",
     "require-jsdoc": "off",
+    "valid-jsdoc": "off",
     "one-var": "off",
     "arrow-parens": "off",
     "max-len": "off",

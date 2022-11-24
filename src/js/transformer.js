@@ -1,5 +1,8 @@
 import { select } from '@wordpress/data';
 
+/**
+ * Get a list of transformations in a to and from format
+ */
 const getTransformations = () => {
   const dedup = new Set();
   return select('core/blocks')
@@ -49,6 +52,10 @@ const getTransformations = () => {
     .filter((x) => x.transform)
     .filter(({ to, from }) => !dedup.has(`${to},${from}`) && dedup.add(`${to},${from}`));
 };
+
+/**
+ * Search the transformation list a determine a transformation path from the "from" to the "to" block
+ */
 const search = (lookupMap, from, to) => {
   const queue = [];
   const alreadyFound = new Set();
@@ -73,6 +80,10 @@ const search = (lookupMap, from, to) => {
   }
 };
 
+/**
+ * Search the all available transformations to determine a transformation path from the "from" to the "to" block
+ * Including experimental transforations
+ */
 export const transformationSearch = (from, to) => {
   const transformations = getTransformations();
   const lookupMap = {};

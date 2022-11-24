@@ -6,12 +6,19 @@ import { pasteCopiedBlocks } from './paste';
 import './store';
 import './menu-item';
 
+/**
+ * Store copied blocks in redux
+ */
 const copySelectedBlocks = () => {
   const { getBlock, getSelectedBlockClientIds } = select('core/block-editor');
   const { setCopiedBlocks } = dispatch('cps/data');
   const blockIds = getSelectedBlockClientIds();
   setCopiedBlocks(blockIds.map((blockId) => getBlock(blockId)));
 };
+
+/**
+ * Create a copy listener for storing the blocks, and a paste listener
+ */
 const CopyPasteStyles = () => {
   useEffect(() => {
     const pasteEvent = (e) => {

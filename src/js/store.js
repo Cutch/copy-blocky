@@ -12,6 +12,9 @@ const actions = {
   },
 };
 
+/**
+ * Create a store to save copied blocks to
+ */
 const store = createReduxStore('cps/data', {
   reducer(state = initialState, action) {
     switch (action.type) {
