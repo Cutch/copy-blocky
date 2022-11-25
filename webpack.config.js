@@ -9,6 +9,7 @@ module.exports = (config) => {
   return {
     entry: {
       'copy-paste-styles': './src/js/copy-paste-styles.js',
+      settings: './src/js/settings.js',
     },
     output: {
       path: path.resolve(__dirname, outputPath),
@@ -23,8 +24,14 @@ module.exports = (config) => {
         patterns: [
           { from: 'readme.txt', to: '' },
           {
+            from: 'src/css/*',
+            to() {
+              return 'css/[name][ext]';
+            },
+          },
+          {
             from: 'src/*.php',
-            to({ context, absoluteFilename }) {
+            to() {
               return '[name][ext]';
             },
           },
