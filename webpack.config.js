@@ -8,7 +8,7 @@ module.exports = (config) => {
   const isEnvDevelopment = config.mode === 'development';
   return {
     entry: {
-      'copy-paste-styles': './src/js/copy-paste-styles.js',
+      'copy-blocky': './src/js/copy-blocky.js',
       settings: './src/js/settings.js',
     },
     output: {

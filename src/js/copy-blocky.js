@@ -12,7 +12,7 @@ import './menu-item';
  */
 const copySelectedBlocks = () => {
   const { getBlock, getSelectedBlockClientIds } = select('core/block-editor');
-  const { setCopiedBlocks } = dispatch('copy-paste-styles/data');
+  const { setCopiedBlocks } = dispatch('copy-blocky/data');
   const blockIds = getSelectedBlockClientIds();
   setCopiedBlocks(blockIds.map((blockId) => getBlock(blockId)));
 };
@@ -20,25 +20,25 @@ const copySelectedBlocks = () => {
 /**
  * Create a copy listener for storing the blocks, and a paste listener
  */
-const CopyPasteStyles = () => {
+const copyBlocky = () => {
   useEffect(() => {
     const pasteEvent = (e) => {
       const eventModifier = Object.keys(isKeyboardEvent).find((eventModifier) => isKeyboardEvent[eventModifier](e, e.key));
-      if (eventModifier == window.copyPasteStyles.hotkeyModifier && e.key === window.copyPasteStyles.hotkeyKey) {
+      if (eventModifier == window.copyBlocky.hotkeyModifier && e.key === window.copyBlocky.hotkeyKey) {
         pasteCopiedBlocks();
         e.preventDefault();
       }
     };
     document.addEventListener('copy', copySelectedBlocks);
     document.addEventListener('keydown', pasteEvent);
-    const shortcutName = __('Paste Styles', 'copy-paste-styles');
-    const description = __('Paste the styles of a copied block', 'copy-paste-styles');
+    const shortcutName = __('Paste Styles', 'copy-blocky');
+    const description = __('Paste the styles of a copied block', 'copy-blocky');
     const { registerShortcut, unregisterShortcut } = dispatch('core/keyboard-shortcuts');
     registerShortcut({
       name: shortcutName,
       category: 'block',
       description,
-      keyCombination: { modifier: window.copyPasteStyles.hotkeyModifier, character: window.copyPasteStyles.hotkeyKey },
+      keyCombination: { modifier: window.copyBlocky.hotkeyModifier, character: window.copyBlocky.hotkeyKey },
     });
     return () => {
       unregisterShortcut(shortcutName);
@@ -49,6 +49,6 @@ const CopyPasteStyles = () => {
   return null;
 };
 
-registerPlugin('copy-paste-styles', {
-  render: CopyPasteStyles,
+registerPlugin('copy-blocky', {
+  render: copyBlocky,
 });

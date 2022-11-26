@@ -95,7 +95,7 @@ const updateAndMergeBlock = (blockId, copyBlock, pasteBlock) => {
  * Start the paste procedure, this may be one or more blocks depending on what was copied and what is selected for pasting
  */
 export const pasteCopiedBlocks = () => {
-  const { getCopiedBlocks } = select('copy-paste-styles/data');
+  const { getCopiedBlocks } = select('copy-blocky/data');
   const copiedData = getCopiedBlocks();
 
   const { getBlock, getSelectedBlockClientIds } = select('core/block-editor');

@@ -15,7 +15,7 @@ const actions = {
 /**
  * Create a store to save copied blocks to
  */
-const store = createReduxStore('copy-paste-styles/data', {
+const store = createReduxStore('copy-blocky/data', {
   reducer(state = initialState, action) {
     switch (action.type) {
       case 'SET_COPIED_BLOCKS':

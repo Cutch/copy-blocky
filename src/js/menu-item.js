@@ -7,10 +7,10 @@ import { __ } from '@wordpress/i18n';
 /**
  * Add a paste styles button to the context menu
  */
-const CopyPasteStylesMenuPluggin = () => (
-  <PluginBlockSettingsMenuItem icon={replace} label={__('Paste Styles', 'copy-paste-styles')} onClick={pasteCopiedBlocks} />
+const copyBlockyMenuPluggin = () => (
+  <PluginBlockSettingsMenuItem icon={replace} label={__('Paste Styles', 'copy-blocky')} onClick={pasteCopiedBlocks} />
 );
 
-registerPlugin('copy-paste-styles-menu-item', {
-  render: CopyPasteStylesMenuPluggin,
+registerPlugin('copy-blocky-menu-item', {
+  render: copyBlockyMenuPluggin,
 });
