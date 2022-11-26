@@ -21,6 +21,11 @@ Using either ctrl+c and ctrl+shift+v (Configurable from settings), or the the co
 
 == Frequently asked questions ==
 
+= Why don't my text styles (bold, italics) copy =
+
+Unfortunately, text styles are tied to the content itself. This plugin can be used to convert copy and paste your h3 headings, or turn list bullets into numbers. The "styles" are block styles not text styles.
+
+
 = Can use this on multiple blocks =
 
 Yes, you can copy from and paste to any number of blocks.

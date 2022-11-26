@@ -26,13 +26,15 @@ const updateAndMergeBlock = (blockId, copyBlock, pasteBlock) => {
 
   if (pasteBlock.name === copyBlock.name) {
     // If this is the same block copy attributes
+    if (debugging) console.log(copyBlock);
     const attributes = { ...copyBlock.attributes };
     // Remove invalid attributes
     for (const key of invalidKeys) {
       delete attributes[key];
     }
+    if (debugging) console.log(attributes, invalidKeys);
     // Set the block attributes
-    updateBlock(blockId, attributes);
+    updateBlock(blockId, { attributes });
   } else {
     // Check for parents if this block cant be transformed
     let transformers = transformationSearch(pasteBlock.name, copyBlock.name);
