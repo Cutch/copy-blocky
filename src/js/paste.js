@@ -39,14 +39,25 @@ const updateAndMergeBlock = (blockId, copyBlock, pasteBlock) => {
     // Check for parents if this block cant be transformed
     let transformers = transformationSearch(pasteBlock.name, copyBlock.name);
     let copyBlockType = getBlockType(copyBlock.name);
-    while (!transformers && copyBlockType.parent) {
-      const parents = getBlockParents(copyBlock.clientId);
-      if (debugging) console.log(copyBlock);
+    let pasteBlockType = getBlockType(copyBlock.name);
+    while (!transformers && (copyBlockType.parent || pasteBlockType.parent)) {
+      // Check if the copy block has a parent
+      let parents = getBlockParents(copyBlock.clientId);
+      if (debugging) console.log('copyBlock', copyBlock);
       if (parents.length === 0) break; // Shouldn't happen, unless block is invalid
       copyBlock = getBlock(parents[parents.length - 1]);
-      if (debugging) console.log('parents', copyBlock, parents);
-      transformers = transformationSearch(pasteBlock.name, copyBlock.name);
+      if (debugging) console.log('copyBlock parents', copyBlock, parents);
       copyBlockType = getBlockType(copyBlock.name);
+
+      // Check if the paste block has a parent
+      parents = getBlockParents(pasteBlock.clientId);
+      if (debugging) console.log('pasteBlock', pasteBlock);
+      if (parents.length === 0) break; // Shouldn't happen, unless block is invalid
+      pasteBlock = getBlock(parents[parents.length - 1]);
+      if (debugging) console.log('pasteBlock parents', copyBlock, parents);
+      pasteBlockType = getBlockType(pasteBlock.name);
+
+      transformers = transformationSearch(pasteBlock.name, copyBlock.name);
       invalidKeys = getInvalidKeys(copyBlock);
     }
     if (debugging) console.log('invalidKeys', invalidKeys);
@@ -79,12 +90,14 @@ const updateAndMergeBlock = (blockId, copyBlock, pasteBlock) => {
       if (debugging) console.log(copyBlock);
       /* const content = getBlockContent(pasteBlock); */
 
+      // TODO: Better content copying, ex. list to button
+
       // Copy the attribute to the new block
       const attributes = { ...copyBlock.attributes };
       const oldAttributes = { ...pasteBlock.attributes };
       // Remove invalid attributes
       for (const key of invalidKeys) {
-        delete oldAttributes[key];
+        delete attributes[key];
       }
       // Set the new block type and attributes
       updateBlock(blockId, { attributes: { ...oldAttributes, ...attributes }, name: copyBlock.name });
