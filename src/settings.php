@@ -25,7 +25,13 @@ add_action('admin_enqueue_scripts', 'copy_paste_styles_add_settings_script');
 
 function add_settings_page()
 {
-  add_options_page('Copy Paste Styles', 'Copy Paste Styles', 'manage_options', 'Copy Paste Styles', 'render_copy_paste_styles_settings_page');
+  add_options_page(
+    __('Copy Paste Styles', 'copy-paste-styles'),
+    __('Copy Paste Styles', 'copy-paste-styles'),
+    'manage_options',
+    __('Copy Paste Styles', 'copy-paste-styles'),
+    'render_copy_paste_styles_settings_page'
+  );
 }
 add_action('admin_menu', 'add_settings_page');
 
@@ -38,7 +44,7 @@ function render_copy_paste_styles_settings_page()
     <?php
     settings_fields('copy_paste_styles_options');
     do_settings_sections('copy_paste_styles'); ?>
-    <input name="submit" class="button button-primary" type="submit" value="<?php esc_attr_e('Save'); ?>" />
+    <input name="submit" class="button button-primary" type="submit" value="<?php esc_attr_e(__('Save', 'copy-paste-styles')); ?>" />
   </form>
 <?php
 }
@@ -46,9 +52,9 @@ function render_copy_paste_styles_settings_page()
 function register_settings()
 {
   register_setting('copy_paste_styles_options', 'copy_paste_styles_options', 'copy_paste_styles_options_validate');
-  add_settings_section('settings', 'Hotkeys', 'copy_paste_styles_section_text', 'copy_paste_styles');
+  add_settings_section('settings', __('Hotkeys', 'copy-paste-styles'), 'copy_paste_styles_section_text', 'copy_paste_styles');
 
-  add_settings_field('copy_paste_styles_setting_hotkey', 'Style Paste Hotkey', 'copy_paste_styles_setting_hotkey', 'copy_paste_styles', 'settings');
+  add_settings_field('copy_paste_styles_setting_hotkey', __('Paste Styles Hotkey', 'copy-paste-styles'), 'copy_paste_styles_setting_hotkey', 'copy_paste_styles', 'settings');
   add_settings_field('copy_paste_styles_setting_hotkey_modifier', null, 'copy_paste_styles_setting_hotkey_modifier', 'copy_paste_styles', 'settings');
   add_settings_field('copy_paste_styles_setting_hotkey_key', null, 'copy_paste_styles_setting_hotkey_key', 'copy_paste_styles', 'settings');
 
@@ -81,7 +87,7 @@ function copy_paste_styles_options_validate($input)
 
 function copy_paste_styles_section_text()
 {
-  echo 'Set the hotkey used for pasting styles.';
+  echo __('Set the hotkey used for pasting styles.', 'copy-paste-styles');
 }
 
 function copy_paste_styles_setting_hotkey()
