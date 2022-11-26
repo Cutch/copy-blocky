@@ -64,6 +64,7 @@ module.exports = (config) => {
       usedExports: true,
       usedExports: !isEnvDevelopment,
       removeEmptyChunks: true,
+      minimize: false,
     },
   };
 };

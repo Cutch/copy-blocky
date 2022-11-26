@@ -12,6 +12,9 @@ Copy and Paste Gutenberg blocks and styles.
 == Description ==
 
 Using either ctrl+c and ctrl+shift+v (Configurable from settings), or the the copy styles button in the block editor. Copy and paste the type and styles from one block to another.
+Ex. Click a header block, press ctrl+c (to copy), then click a paragraph block, and press ctrl+shift+v.
+
+Note: For apple devices use the cmd key instead of ctrl. ex. cmd+c and cmd+shift+v.
 
 = Features =
  - Convert to blocks which do not have a direct conversion
@@ -25,7 +28,6 @@ Using either ctrl+c and ctrl+shift+v (Configurable from settings), or the the co
 
 Unfortunately, text styles are tied to the content itself. This plugin can be used to convert copy and paste your h3 headings, or turn list bullets into numbers. The "styles" are block styles not text styles.
 
-
 = Can use this on multiple blocks =
 
 Yes, you can copy from and paste to any number of blocks.
@@ -34,6 +36,7 @@ Yes, you can copy from and paste to any number of blocks.
 
 If the custom blocks supports the transformation from a core block it may work. Otherwise, it does the best it can.
 However, I wouldn't expect text to turn into images. If there are some cases that are missing or a block its not working for, post it here [GitHub Issues](https://github.com/Cutch/copy-blocky/issues).
+
 
 == Installation ==
 

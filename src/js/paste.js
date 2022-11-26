@@ -1,7 +1,9 @@
 import { dispatch, select } from '@wordpress/data';
 import { getBlockContent } from '@wordpress/blocks';
 import { transformationSearch } from './transformer';
-const debugging = false;
+
+window.copyBlocky = { ...(window.copyBlocky ?? {}), debugging: false };
+
 /**
  * Using the templated block determine attributes which should not be copied, ex. the content
  */
@@ -26,13 +28,15 @@ const updateAndMergeBlock = (blockId, copyBlock, pasteBlock) => {
 
   if (pasteBlock.name === copyBlock.name) {
     // If this is the same block copy attributes
-    if (debugging) console.log(copyBlock);
+    if (window.copyBlocky.debugging) console.log('Blocks are the same type');
+    if (window.copyBlocky.debugging) console.log('copyBlock', copyBlock);
+
     const attributes = { ...copyBlock.attributes };
     // Remove invalid attributes
     for (const key of invalidKeys) {
       delete attributes[key];
     }
-    if (debugging) console.log(attributes, invalidKeys);
+    if (window.copyBlocky.debugging) console.log({ attributes, invalidKeys });
     // Set the block attributes
     updateBlock(blockId, { attributes });
   } else {
@@ -41,31 +45,38 @@ const updateAndMergeBlock = (blockId, copyBlock, pasteBlock) => {
     let copyBlockType = getBlockType(copyBlock.name);
     let pasteBlockType = getBlockType(copyBlock.name);
     while (!transformers && (copyBlockType.parent || pasteBlockType.parent)) {
+      if (window.copyBlocky.debugging) console.log('No transformer found, checking for parent blocks');
+
+      // TODO: Theoretically, the current block could match to the parent of the other or vice versa, in practice this shouldn't matter, at least for built in blocks
+
       // Check if the copy block has a parent
       let parents = getBlockParents(copyBlock.clientId);
-      if (debugging) console.log('copyBlock', copyBlock);
+      if (window.copyBlocky.debugging) console.log('copyBlock', copyBlock);
       if (parents.length === 0) break; // Shouldn't happen, unless block is invalid
       copyBlock = getBlock(parents[parents.length - 1]);
-      if (debugging) console.log('copyBlock parents', copyBlock, parents);
+      if (window.copyBlocky.debugging) console.log('copyBlock parent', copyBlock, parents);
       copyBlockType = getBlockType(copyBlock.name);
 
       // Check if the paste block has a parent
       parents = getBlockParents(pasteBlock.clientId);
-      if (debugging) console.log('pasteBlock', pasteBlock);
+      if (window.copyBlocky.debugging) console.log('pasteBlock', pasteBlock);
       if (parents.length === 0) break; // Shouldn't happen, unless block is invalid
       pasteBlock = getBlock(parents[parents.length - 1]);
-      if (debugging) console.log('pasteBlock parents', copyBlock, parents);
+      if (window.copyBlocky.debugging) console.log('pasteBlock parent', copyBlock, parents);
       pasteBlockType = getBlockType(pasteBlock.name);
 
+      // Check if transformer exists for this block set
       transformers = transformationSearch(pasteBlock.name, copyBlock.name);
       invalidKeys = getInvalidKeys(copyBlock);
     }
-    if (debugging) console.log('invalidKeys', invalidKeys);
-    if (debugging) console.log(pasteBlock.name, copyBlock.name, transformers);
 
+    if (window.copyBlocky.debugging) console.log('invalidKeys', invalidKeys);
     // There is a valid tranformation path
     if (transformers) {
-      if (debugging) console.log(copyBlock);
+      if (window.copyBlocky.debugging) console.log(`Transformer Found for ${pasteBlock.name} -> ${copyBlock.name}`, transformers);
+      if (window.copyBlocky.debugging) console.log('pasteBlock', pasteBlock);
+      if (window.copyBlocky.debugging) console.log('copyBlock', copyBlock);
+
       let block = pasteBlock;
       // TODO: may need to add isMatch to the transformationSearch and filter out transforms which wouldn't work
       for (const { transform, isMultiBlock, isMatch, experimental } of transformers) {
@@ -83,11 +94,13 @@ const updateAndMergeBlock = (blockId, copyBlock, pasteBlock) => {
         delete attributes[key];
       }
       block.attributes = { ...block.attributes, ...attributes };
+      if (window.copyBlocky.debugging) console.log('New Block', block);
       // replace the current block with the transformed block
       replaceBlock(blockId, block);
     } else {
-      if (debugging) console.log('No Transformer');
-      if (debugging) console.log(copyBlock);
+      if (window.copyBlocky.debugging) console.log('No Transformer');
+      if (window.copyBlocky.debugging) console.log('pasteBlock', pasteBlock);
+      if (window.copyBlocky.debugging) console.log('copyBlock', copyBlock);
       /* const content = getBlockContent(pasteBlock); */
 
       // TODO: Better content copying, ex. list to button
@@ -101,7 +114,7 @@ const updateAndMergeBlock = (blockId, copyBlock, pasteBlock) => {
       }
       // Set the new block type and attributes
       updateBlock(blockId, { attributes: { ...oldAttributes, ...attributes }, name: copyBlock.name });
-      if (debugging) console.log({ attributes: { ...oldAttributes, ...attributes } });
+      if (window.copyBlocky.debugging) console.log('New Attributes', { attributes: { ...oldAttributes, ...attributes } });
     }
   }
 };
