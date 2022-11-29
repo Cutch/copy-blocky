@@ -23,20 +23,20 @@ function copy_blocky_add_settings_script()
 add_action('admin_enqueue_scripts', 'copy_blocky_add_settings_script');
 
 
-function add_settings_page()
+function copy_blocky_add_settings_page()
 {
   add_options_page(
     __('Copy Blocky', 'copy-blocky'),
     __('Copy Blocky', 'copy-blocky'),
     'manage_options',
     __('Copy Blocky', 'copy-blocky'),
-    'render_copy_blocky_settings_page'
+    'copy_blocky_render_settings_page'
   );
 }
-add_action('admin_menu', 'add_settings_page');
+add_action('admin_menu', 'copy_blocky_add_settings_page');
 
 
-function render_copy_blocky_settings_page()
+function copy_blocky_render_settings_page()
 {
 ?>
   <h2>Copy Blocky Settings</h2>
@@ -49,7 +49,7 @@ function render_copy_blocky_settings_page()
 <?php
 }
 
-function register_settings()
+function copy_blocky_register_settings()
 {
   register_setting('copy_blocky_options', 'copy_blocky_options', 'copy_blocky_options_validate');
   add_settings_section('settings', __('Hotkeys', 'copy-blocky'), 'copy_blocky_section_text', 'copy_blocky');
@@ -63,7 +63,7 @@ function register_settings()
     update_option('copy_blocky_options', array('hotkey' => 'ctrl+shift+V', 'hotkeyModifier' => 'primaryShift', 'hotkeyKey' => 'V'));
   }
 }
-add_action('admin_init', 'register_settings');
+add_action('admin_init', 'copy_blocky_register_settings');
 
 
 function copy_blocky_add_settings($hook)
