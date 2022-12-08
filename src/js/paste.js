@@ -93,7 +93,11 @@ const updateAndMergeBlock = (blockId, copyBlock, pasteBlock) => {
       for (const key of invalidKeys) {
         delete attributes[key];
       }
-      block.attributes = { ...block.attributes, ...attributes };
+      if (Array.isArray(block))
+        block.forEach((b) => {
+          b.attributes = { ...b.attributes, ...attributes };
+        });
+      else block.attributes = { ...block.attributes, ...attributes };
       if (window.copyBlocky.debugging) console.log('New Block', block);
       // replace the current block with the transformed block
       replaceBlock(blockId, block);

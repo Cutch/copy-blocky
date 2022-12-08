@@ -6,7 +6,7 @@
  * Description: Copy and Paste Gutenberg Blocks and Styles
  * Requires at least: 5.6
  * Requires PHP: 7.2
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Cutch
  * Author URI: https://github.com/Cutch
  * License: GPL3

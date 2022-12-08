@@ -3,7 +3,7 @@ Contributors: 		Cutch
 Tags: 				copy, styles
 Requires at least: 	5.6
 Tested up to: 		6.1
-Stable tag: 		1.0.0
+Stable tag: 		1.0.1
 License: 			GPLv3
 License URI: 		https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -45,3 +45,11 @@ Just follow the [Automatic Plugin Installation](https://wordpress.org/support/ar
 == Issues ==
 
 Please post an issue in the [GitHub Issues](https://github.com/Cutch/copy-blocky/issues)
+
+== Changelog ==
+
+= 1.0.1 =
+* Fixed an issue with some transformations not copying the block attributes.
+
+= 1.0.0 =
+* Initial Version
